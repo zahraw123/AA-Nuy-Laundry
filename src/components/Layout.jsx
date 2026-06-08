@@ -1,5 +1,3 @@
-// src/components/Layout.jsx
-
 import { useState } from 'react'
 import { Link, useLocation, Outlet, useNavigate } from 'react-router-dom'
 import { logout } from '../firebase/authService'
@@ -9,7 +7,7 @@ import {
   markPickupStatusAsSeen,
 } from '../hooks/useNotifications'
 
-// ── Badge kecil di sebelah label menu ────────────────────────────────────────
+// Badge kecil di sebelah label menu 
 
 function NavBadge({ count }) {
   if (!count) return null
@@ -29,7 +27,7 @@ function NavBadge({ count }) {
   )
 }
 
-// Badge dot kecil di atas icon (mode collapsed / mobile)
+// Badge dot kecil di atas icon
 function DotBadge({ show }) {
   if (!show) return null
   return (
@@ -53,7 +51,7 @@ export default function Layout({ user, onLogout }) {
   const navigate = useNavigate()
 
   // Ambil notifikasi sesuai role
-  const adminNotif = useAdminNotifications()   // selalu dipanggil (hook rules)
+  const adminNotif = useAdminNotifications()   
   const userNotif  = useUserNotifications(user?.role === 'user' ? user?.uid : null)
 
   const isAdmin = user?.role === 'admin'
@@ -102,12 +100,7 @@ export default function Layout({ user, onLogout }) {
   const handleNavClick = (path) => {
     setMobileOpen(false)
 
-    // Saat user membuka halaman Status Penjemputan → tandai semua sudah dilihat
     if (!isAdmin && path === '/user/status-penjemputan') {
-      // Data requests akan di-refresh oleh komponen itu sendiri;
-      // kita tandai "kosongkan badge" dengan menyimpan snapshot kosong dulu
-      // — komponen UserStatusAntarJemput harus memanggil markPickupStatusAsSeen
-      //   setelah data onSnapshot pertama datang. (lihat catatan di bawah)
     }
   }
 
