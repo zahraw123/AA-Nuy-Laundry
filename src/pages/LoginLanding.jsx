@@ -2,11 +2,7 @@
 
 import { useState } from 'react'
 import { loginAdmin } from '../firebase/authService'
-import UserLogin from './Userlogin'
-
-// ⚠️ TIDAK pakai useNavigate di sini.
-// Redirect ditangani App.jsx lewat onAuthChange → setUser → route guard.
-// LoginLanding cukup panggil onLogin(userData) agar App.jsx update state-nya.
+import UserLogin from './UserLogin'
 
 export default function LoginLanding({ onLogin }) {
   const [mode, setMode] = useState(null) // null | 'admin' | 'user'
